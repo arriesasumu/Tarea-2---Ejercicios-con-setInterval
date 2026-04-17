@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 3 Interval</title>
+  </head>
+  <body>
+    <header>
+      <p id="resultado">Tras 20 años aprendi a volverme invisible</p>
+      <button id="boton">Iniciar</button>
+      <button id="parar">Parar</button>
+    </header>
+    <script>
+      let boton = document.getElementById("boton");
+      let pararInvisible = document.getElementById("parar");
+      let parrafo = document.getElementById("resultado");
+      let visible = true;
+      let intervalo = null;
+      boton.addEventListener("click", iniciar);
+      function iniciar() {
+        intervalo = setInterval(function () {
+          visible = !visible;
+          if (visible) {
+            parrafo.style.visibility = "visible";
+          } else {
+            parrafo.style.visibility = "hidden";
+          }
+        }, 500);
+      }
+      pararInvisible.addEventListener("click", parar);
+      function parar() {
+        resultado.innerHTML = "Tras 20 años aprendi a volverme invisible";
+        clearInterval(intervalo);
+      }
+    </script>
+  </body>
+</html>

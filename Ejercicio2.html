@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cuenta atrás</title>
+</head>
+<body>
+
+<p id="mostrar">10</p>
+
+<button id="btnIniciar">Iniciar</button>
+<button id="btnDetener">Parar</button>
+
+<script>
+let cuenta = 10;
+let intervalo = null;
+
+const resultado = document.getElementById("mostrar");
+const btnIniciar = document.getElementById("btnIniciar");
+const btnDetener = document.getElementById("btnDetener");
+
+function iniciar() {
+    if (cuenta <= 0) {
+        cuenta = 10;
+        resultado.innerHTML = cuenta;
+    }
+    clearInterval(intervalo);
+    intervalo = setInterval(function() {
+        cuenta = cuenta - 1;
+        resultado.innerHTML = cuenta;
+
+        if (cuenta === 0) {
+            clearInterval(intervalo);
+            resultado.innerHTML = "¡Tiempo!";
+        }
+    }, 1000);
+}
+
+function parar() {
+    clearInterval(intervalo);
+}
+
+
+btnIniciar.addEventListener("click", iniciar);
+btnDetener.addEventListener("click", parar);
+</script>
+
+</body>
+</html>
